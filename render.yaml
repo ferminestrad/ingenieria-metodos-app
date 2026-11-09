@@ -1,0 +1,13 @@
+# La raíz del repositorio contiene backend/ y frontend/ como carpetas hermanas.
+# Blueprint opcional; los mismos valores pueden introducirse en el panel de Render.
+services:
+  - type: web
+    name: ingenieria-metodos-piloto
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: python -m pip install -r backend/requirements.txt
+    startCommand: python -m uvicorn main:app --app-dir backend --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/opciones
+    autoDeployTrigger: commit
+# No se crea una base de datos: la aplicación actual no la utiliza.

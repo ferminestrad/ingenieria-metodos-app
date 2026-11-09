@@ -1,0 +1,557 @@
+.df-page {
+    max-width: 1500px;
+    margin: auto;
+    padding: 70px 50px 120px;
+}
+
+
+/* Encabezado */
+
+.df-header {
+    max-width: 750px;
+    margin-bottom: 40px;
+}
+
+.section-label {
+    margin-bottom: 12px;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: #666;
+}
+
+.df-header h1 {
+    margin-bottom: 20px;
+
+    font-size: 50px;
+    line-height: 1;
+}
+
+.df-header p {
+    font-size: 17px;
+    color: #555;
+}
+
+
+/* Tarjetas genéricas */
+
+.df-card {
+    background: white;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    padding: 30px;
+
+    margin-bottom: 30px;
+}
+
+.df-card h2 {
+    margin-bottom: 20px;
+
+    font-size: 22px;
+}
+
+
+/* Datos generales */
+
+.meta-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.campo input[type="text"],
+.campo input[type="date"],
+.campo select,
+.campo textarea {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    font-size: 14px;
+
+    font-family: inherit;
+}
+
+.campo-color input[type="color"] {
+    width: 100%;
+    height: 42px;
+
+    padding: 3px;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+.campo-comentarios textarea {
+    resize: vertical;
+}
+
+
+/* Pestañas */
+
+.tabs {
+    display: flex;
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 12px 22px;
+
+    background: white;
+    color: #555;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    background: #111;
+    color: white;
+    border-color: #111;
+}
+
+
+/* Tabla */
+
+.tabla-wrapper {
+    width: 100%;
+    overflow-x: auto;
+
+    margin-bottom: 20px;
+}
+
+#tabla-pasos {
+    width: 100%;
+    min-width: 1150px;
+
+    border-collapse: collapse;
+
+    font-size: 14px;
+}
+
+#tabla-pasos th,
+#tabla-pasos td {
+    padding: 10px;
+
+    text-align: left;
+    vertical-align: middle;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#tabla-pasos th {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+
+    color: #555;
+
+    border-bottom: 2px solid #111;
+}
+
+.col-num {
+    width: 32px;
+    color: #999;
+    font-variant-numeric: tabular-nums;
+}
+
+.col-simbolo {
+    width: 210px;
+}
+
+.col-tipo {
+    width: 110px;
+    color: #555;
+    font-size: 13px;
+}
+
+.col-num-input {
+    width: 110px;
+}
+
+.col-acciones {
+    width: 130px;
+}
+
+#tabla-pasos input[type="text"],
+#tabla-pasos input[type="number"] {
+    width: 100%;
+
+    padding: 8px;
+
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+    font-size: 13.5px;
+}
+
+
+/* Selector de símbolos */
+
+.simbolos-selector {
+    display: flex;
+    gap: 6px;
+}
+
+.simbolo-btn {
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+
+    border-radius: 3px;
+
+    transition: background-color 0.15s ease;
+}
+
+.simbolo-btn:hover {
+    background: #f0f0f0;
+}
+
+.simbolo-btn svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Acciones por fila */
+
+.fila-acciones {
+    display: flex;
+    gap: 6px;
+}
+
+.fila-acciones button {
+    width: 28px;
+    height: 28px;
+
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+    line-height: 1;
+
+    color: #333;
+}
+
+.fila-acciones button:hover {
+    background: #f0f0f0;
+}
+
+.fila-acciones .btn-eliminar {
+    color: #b00020;
+    border-color: #b00020;
+}
+
+.fila-acciones .btn-eliminar:hover {
+    background: #fdecec;
+}
+
+
+/* Botones generales */
+
+.acciones-tabla {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-secundario {
+    padding: 12px 20px;
+
+    background: white;
+    color: #111;
+
+    border: 1px solid #111;
+    border-radius: 4px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn-secundario:hover {
+    background: #f0f0f0;
+}
+
+.btn-primario {
+    padding: 12px 20px;
+
+    background: #111;
+    color: white;
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn-primario:hover {
+    background: #333;
+}
+
+.btn-primario:disabled,
+.btn-secundario:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* ==================================================
+   MODAL: VISTA PREVIA DEL PDF
+   ================================================== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    z-index: 1000;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-contenido {
+    width: 100%;
+    max-width: 1100px;
+    height: 90vh;
+
+    background: white;
+    border-radius: 6px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 22px;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-header h3 {
+    font-size: 16px;
+}
+
+.modal-cerrar {
+    width: 30px;
+    height: 30px;
+
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+.modal-cerrar:hover {
+    background: #f0f0f0;
+}
+
+#iframe-vista-previa {
+    flex: 1;
+    width: 100%;
+    border: none;
+}
+
+
+/* Resumen */
+
+.resumen-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(130px, 1fr));
+
+    gap: 14px;
+
+    margin-bottom: 22px;
+}
+
+.resumen-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 16px;
+
+    background: #f7f7f7;
+
+    border-radius: 5px;
+}
+
+.resumen-item svg {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.resumen-item .valor {
+    display: block;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.resumen-item .etiqueta {
+    display: block;
+
+    font-size: 12px;
+    color: #666;
+}
+
+.resumen-totales {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e5e5e5;
+}
+
+.resumen-total {
+    font-size: 15px;
+}
+
+.resumen-total strong {
+    display: block;
+    font-size: 24px;
+}
+
+
+/* Comparación */
+
+.comparacion.hidden {
+    display: none;
+}
+
+.comparacion-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 16px;
+}
+
+.comparacion-item {
+    padding: 18px;
+
+    background: #f7f7f7;
+    border-radius: 5px;
+}
+
+.comparacion-item .etiqueta {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 12px;
+    color: #666;
+}
+
+.comparacion-item .valores {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.comparacion-item .valores span {
+    font-size: 17px;
+    color: #999;
+}
+
+.comparacion-item .ahorro {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.ahorro.positivo {
+    color: #0a7a3d;
+}
+
+.ahorro.negativo {
+    color: #b00020;
+}
+
+.ahorro.neutro {
+    color: #555;
+}
+
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+    .df-page {
+        padding: 50px 20px 100px;
+    }
+
+    .df-header h1 {
+        font-size: 36px;
+    }
+
+    .df-card {
+        padding: 20px;
+    }
+
+}

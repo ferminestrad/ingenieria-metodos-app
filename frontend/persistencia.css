@@ -1,0 +1,8 @@
+.persistencia-barra{margin:20px 0 28px;padding:18px 20px;border:1px solid #ddd;border-radius:4px;background:#fff}
+.persistencia-acciones{display:flex;gap:10px;flex-wrap:wrap}
+.persistencia-barra button{font:600 14px Arial,sans-serif;padding:10px 16px;border:1px solid #111;border-radius:4px;background:white;color:#111;cursor:pointer}
+.persistencia-barra button:hover{background:#eee}
+.persistencia-barra button:focus-visible{outline:2px solid #444;outline-offset:3px}
+.persistencia-estado{font-size:13px;color:#666;margin-top:10px;min-height:21px}
+.persistencia-estado.error{color:#a51c30}
+@media print{.persistencia-barra,.persistencia-estado{display:none}}

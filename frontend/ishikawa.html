@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Herramientas exploratorias | Ingeniería de Métodos</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ishikawa.css">
+    <link rel="stylesheet" href="persistencia.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            INGENIERÍA DE MÉTODOS
+        </a>
+
+        <nav class="nav-menu">
+
+            <a href="exploratorias.html">
+                Herramientas exploratorias
+            </a>
+
+            <a href="registro-analisis.html">
+                Registro y análisis
+            </a>
+
+            <a href="operador-maquina.html">
+                Hombre–Máquina
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="ishikawa-page">
+
+        <section class="ishikawa-header">
+
+            <a href="exploratorias.html" class="breadcrumb">
+                ← Herramientas exploratorias
+            </a>
+
+            <p class="section-label">
+                HERRAMIENTAS EXPLORATORIAS
+            </p>
+
+            <h1>Diagrama de Ishikawa</h1>
+
+            <p>
+                Identifica las posibles causas de un problema mediante
+                la clasificación de las 6M.
+            </p>
+
+        </section>
+
+
+        <!-- Problema principal -->
+
+        <section class="persistencia-barra" aria-label="Guardar y recuperar estudio">
+            <div class="persistencia-acciones"><button type="button" id="guardar">Guardar estudio</button><button type="button" id="cargar">Cargar estudio</button><button type="button" id="nuevo">Nuevo</button><input id="archivo-estudio" type="file" accept=".json,application/json" hidden></div>
+            <p id="persistencia-estado" class="persistencia-estado" role="status" aria-live="polite">El borrador se guarda automáticamente en este navegador. Guarda un archivo para conservar otra versión.</p>
+        </section>
+
+        <section class="problem-section">
+
+            <label for="problema">
+                Problema o efecto
+            </label>
+
+            <input
+                type="text"
+                id="problema"
+                placeholder="Ej. Alto porcentaje de piezas defectuosas"
+            >
+
+        </section>
+
+
+        <!-- Categorías -->
+
+        <section class="categories">
+
+            <!-- Mano de obra -->
+
+            <article class="category">
+
+                <h2>Mano de obra</h2>
+
+                <div id="inputs-mano-obra" class="causes-container">
+
+                    <input
+                        type="text"
+                        class="cause-input"
+                        placeholder="Escribe una causa"
+                    >
+
+                </div>
+
+                <button
+                    class="add-cause"
+                    data-category="mano-obra"
+                >
+                    + Agregar causa
+                </button>
+
+            </article>
+
+
+            <!-- Maquinaria -->
+
+            <article class="category">
+
+                <h2>Maquinaria</h2>
+
+                <div id="inputs-maquinaria" class="causes-container">
+
+                    <input
+                        type="text"
+                        class="cause-input"
+                        placeholder="Escribe una causa"
+                    >
+
+                </div>
+
+                <button
+                    class="add-cause"
+                    data-category="maquinaria"
+                >
+                    + Agregar causa
+                </button>
+
+            </article>
+
+
+            <!-- Método -->
+
+            <article class="category">
+
+                <h2>Método</h2>
+
+                <div id="inputs-metodos" class="causes-container">
+
+                    <input
+                        type="text"
+                        class="cause-input"
+                        placeholder="Escribe una causa"
+                    >
+
+                </div>
+
+                <button
+                    class="add-cause"
+                    data-category="metodos"
+                >
+                    + Agregar causa
+                </button>
+
+            </article>
+
+
+            <!-- Materiales -->
+
+            <article class="category">
+
+                <h2>Materiales</h2>
+
+                <div id="inputs-materiales" class="causes-container">
+
+                    <input
+                        type="text"
+                        class="cause-input"
+                        placeholder="Escribe una causa"
+                    >
+
+                </div>
+
+                <button
+                    class="add-cause"
+                    data-category="materiales"
+                >
+                    + Agregar causa
+                </button>
+
+            </article>
+
+
+            <!-- Medición -->
+
+            <article class="category">
+
+                <h2>Medición</h2>
+
+                <div id="inputs-medicion" class="causes-container">
+
+                    <input
+                        type="text"
+                        class="cause-input"
+                        placeholder="Escribe una causa"
+                    >
+
+                </div>
+
+                <button
+                    class="add-cause"
+                    data-category="medicion"
+                >
+                    + Agregar causa
+                </button>
+
+            </article>
+
+
+            <!-- Medio ambiente -->
+
+            <article class="category">
+
+                <h2>Medio ambiente</h2>
+
+                <div id="inputs-medio-ambiente" class="causes-container">
+
+                    <input
+                        type="text"
+                        class="cause-input"
+                        placeholder="Escribe una causa"
+                    >
+
+                </div>
+
+                <button
+                    class="add-cause"
+                    data-category="medio-ambiente"
+                >
+                    + Agregar causa
+                </button>
+
+            </article>
+
+        </section>
+
+
+        <button id="generar-diagrama" class="generate-button">
+            Generar diagrama
+        </button>
+
+
+        <!-- Diagrama -->
+
+        <section class="diagram-section">
+
+            <div class="diagram-toolbar">
+                <h2>Diagrama</h2>
+                <button id="exportar-jpg" class="export-button" type="button">
+                    Descargar JPG
+                </button>
+            </div>
+
+            <p id="estado-exportacion" class="export-status" role="status" aria-live="polite"></p>
+
+            <div class="diagram-wrapper">
+
+                <svg
+                    id="ishikawa"
+                    role="img"
+                    aria-labelledby="titulo-ishikawa"
+                    viewBox="0 0 1200 650"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                </svg>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="persistencia.js"></script>
+    <script src="ishikawa.js"></script>
+    <script src="persistencia-diagramas.js"></script>
+    <script src="ishikawa-export.js"></script>
+
+</body>
+
+</html>

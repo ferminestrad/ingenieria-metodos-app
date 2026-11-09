@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Diagrama de flujo de proceso | Ingeniería de Métodos</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="diagrama-flujo.css">
+    <link rel="stylesheet" href="persistencia.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            INGENIERÍA DE MÉTODOS
+        </a>
+
+        <nav class="nav-menu">
+
+            <a href="exploratorias.html">
+                Herramientas exploratorias
+            </a>
+
+            <a href="registro-analisis.html">
+                Registro y análisis
+            </a>
+
+            <a href="operador-maquina.html">
+                Hombre–Máquina
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="df-page">
+
+        <section class="df-header">
+
+            <a href="exploratorias.html" class="breadcrumb">
+                ← Herramientas exploratorias
+            </a>
+
+            <p class="section-label">
+                HERRAMIENTAS EXPLORATORIAS
+            </p>
+
+            <h1>Diagrama de flujo de proceso</h1>
+
+            <p>
+                Documenta cada paso del proceso, marca su símbolo
+                (Operación, Transporte, Inspección, Demora o
+                Almacén) y obtén el resumen de conteos, tiempo y
+                distancia — para el método actual y para el
+                propuesto.
+            </p>
+
+        </section>
+
+
+        <!-- Datos generales del estudio -->
+
+        <section class="persistencia-barra" aria-label="Guardar y recuperar estudio">
+            <div class="persistencia-acciones"><button type="button" id="guardar">Guardar estudio</button><button type="button" id="cargar">Cargar estudio</button><button type="button" id="nuevo">Nuevo</button><input id="archivo-estudio" type="file" accept=".json,application/json" hidden></div>
+            <p id="persistencia-estado" class="persistencia-estado" role="status" aria-live="polite">El borrador se guarda automáticamente en este navegador. Guarda un archivo para conservar otra versión.</p>
+        </section>
+
+        <section class="df-card df-meta">
+
+            <h2>Datos generales</h2>
+
+            <div class="meta-grid">
+
+                <div class="campo">
+                    <label for="meta-producto">Producto / proceso</label>
+                    <input type="text" id="meta-producto" placeholder="Ej. Ensamble de bisagra">
+                </div>
+
+                <div class="campo">
+                    <label for="meta-ubicacion">Ubicación</label>
+                    <input type="text" id="meta-ubicacion">
+                </div>
+
+                <div class="campo">
+                    <label for="meta-actividad">Actividad</label>
+                    <input type="text" id="meta-actividad">
+                </div>
+
+                <div class="campo">
+                    <label for="meta-fecha">Fecha</label>
+                    <input type="date" id="meta-fecha">
+                </div>
+
+                <div class="campo">
+                    <label for="meta-operador">Operador</label>
+                    <input type="text" id="meta-operador">
+                </div>
+
+                <div class="campo">
+                    <label for="meta-analista">Analista</label>
+                    <input type="text" id="meta-analista">
+                </div>
+
+                <div class="campo">
+                    <label for="meta-tipo">Tipo de diagrama</label>
+                    <select id="meta-tipo">
+                        <option value="Obrero">Obrero</option>
+                        <option value="Material" selected>Material</option>
+                        <option value="Máquina">Máquina</option>
+                    </select>
+                </div>
+
+                <div class="campo campo-color">
+                    <label for="meta-color">Color al seleccionar símbolo</label>
+                    <input type="color" id="meta-color" value="#8a8a8a">
+                </div>
+
+                <div class="campo">
+                    <label for="meta-maquina">Máquina</label>
+                    <input type="text" id="meta-maquina" placeholder="Opcional">
+                </div>
+
+            </div>
+
+            <div class="campo campo-comentarios">
+                <label for="meta-comentarios">Comentarios</label>
+                <textarea id="meta-comentarios" rows="2"></textarea>
+            </div>
+
+        </section>
+
+
+        <!-- Pestañas Actual / Propuesto -->
+
+        <div class="tabs">
+
+            <button class="tab-btn active" data-tab="actual">
+                Método actual
+            </button>
+
+            <button class="tab-btn" data-tab="propuesto">
+                Método propuesto
+            </button>
+
+        </div>
+
+
+        <!-- Tabla dinámica -->
+
+        <section class="df-card">
+
+            <div class="tabla-wrapper">
+
+                <table id="tabla-pasos">
+
+                    <thead>
+                        <tr>
+                            <th class="col-num">#</th>
+                            <th class="col-desc">Descripción</th>
+                            <th class="col-simbolo">Símbolo</th>
+                            <th class="col-tipo">Tipo</th>
+                            <th class="col-num-input">Tiempo (min)</th>
+                            <th class="col-num-input">Distancia (m)</th>
+                            <th class="col-metodo">Método recomendado</th>
+                            <th class="col-acciones">Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabla-pasos-body">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="acciones-tabla">
+
+                <button id="agregar-paso" class="btn-secundario">
+                    + Agregar paso
+                </button>
+
+                <button id="vista-previa" class="btn-secundario">
+                    Vista previa
+                </button>
+
+                <button id="generar-pdf" class="btn-primario">
+                    Generar PDF
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Resumen -->
+
+        <section class="df-card">
+
+            <h2>Resumen</h2>
+
+            <div class="resumen-grid" id="resumen-grid">
+            </div>
+
+            <div class="resumen-totales" id="resumen-totales">
+            </div>
+
+        </section>
+
+
+        <!-- Comparación Actual vs Propuesto -->
+
+        <section class="df-card comparacion hidden" id="comparacion">
+
+            <h2>Comparación: actual vs. propuesto</h2>
+
+            <div class="comparacion-grid" id="comparacion-grid">
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Modal de vista previa del PDF -->
+
+    <div id="modal-vista-previa" class="modal-overlay hidden">
+
+        <div class="modal-contenido">
+
+            <div class="modal-header">
+
+                <h3>Vista previa del PDF</h3>
+
+                <button id="cerrar-vista-previa" class="modal-cerrar">
+                    ✕
+                </button>
+
+            </div>
+
+            <iframe id="iframe-vista-previa" title="Vista previa del PDF"></iframe>
+
+        </div>
+
+    </div>
+
+
+    <!-- jsPDF + AutoTable (generación vectorial del PDF) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="simbolos.js"></script>
+    <script src="pdf-diagrama.js"></script>
+    <script src="persistencia.js"></script>
+    <script src="diagrama-flujo.js?v=20261109-2"></script>
+    <script src="persistencia-diagramas.js"></script>
+
+</body>
+
+</html>
